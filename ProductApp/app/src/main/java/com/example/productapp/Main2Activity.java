@@ -18,11 +18,11 @@ import java.util.List;
 public class Main2Activity extends AppCompatActivity implements  AdapterView.OnItemSelectedListener,View.OnClickListener {
 ImageView iVimg;
 Spinner sp;
-EditText etPrice,etqty,etbill;
+EditText etPrice,etqty,etbill,etdelivery;
 Button btnorder,btnlogOut;
 static  int i;
-double qnty;
-    double[] price = {1665, 2705, 555, 600, 955, 1000};
+double qnty,delivery;
+    double[] price = {1450, 2500, 200, 150, 400, 350};
     int[] imageList={R.drawable.macair,R.drawable.macpro,R.drawable.keyboard,R.drawable.mouse,R.drawable.printer,R.drawable.scanner};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,7 @@ double qnty;
         etPrice=findViewById(R.id.price);
         etqty=findViewById(R.id.qty);
         etbill=findViewById(R.id.bill);
+        etdelivery= findViewById(R.id.delivery);
         btnorder=findViewById(R.id.order);
         btnlogOut=findViewById(R.id.logout);
 
@@ -64,9 +65,10 @@ btnlogOut.setOnClickListener(this);
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
         i = position;
         Double pr = new Double(price[i]);
+        etPrice.setText(pr.toString());
         int img = imageList[i];
         iVimg.setBackgroundResource(img);
-        etPrice.setText(pr.toString());
+
 
     }
 
@@ -81,9 +83,20 @@ btnlogOut.setOnClickListener(this);
 
             case R.id.order:
                 qnty = Double.parseDouble(etqty.getText().toString());
+
+                if(price[i] >= 500){
+                    etdelivery.setText("0");
                 double total = (qnty * price[i]) + (price[i] * 13 / 100);
+               Double Total = new Double(total);
+                etbill.setText(Total.toString());}
+                else
+                {
+                    delivery= 20;
+                   double total = (qnty * price[i]) + (price[i] * 13 / 100) + delivery;
+                   etdelivery.setText(delivery+"");
                 Double Total = new Double(total);
                 etbill.setText(Total.toString());
+                }
                 break;
             case R.id.logout:
                 Intent act1 = new Intent(getApplicationContext(), MainActivity.class);

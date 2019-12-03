@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main2Activity"
+    tools:context=".Main2Activity">
+
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp">
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="50dp"
         android:background="#80E1EE"
         android:text="Welcome"
         android:textAlignment="center"
@@ -22,12 +27,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_marginTop="20dp">
+    android:layout_marginTop="10dp">
 
     <ImageView
         android:id="@+id/img"
         android:layout_width="150dp"
-        android:layout_height="200dp"
+        android:layout_height="170dp"
         tools:layout_editor_absoluteX="10dp"
         tools:layout_editor_absoluteY="81dp"
         tools:ignore="MissingConstraints" />
@@ -117,7 +122,35 @@ android:layout_marginTop="10dp"
     android:text="PLace Order"
     android:textSize="22sp"
     android:textStyle="bold"
-    android:layout_marginTop="20dp"/>
+    android:layout_marginTop="10dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delivery Charges:"
+            android:textAlignment="center"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="203dp"
+            tools:layout_editor_absoluteY="86dp"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/delivery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:editable="false"
+            android:gravity="center"
+            android:inputType="number" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -156,3 +189,4 @@ android:layout_marginTop="10dp"
 
 </LinearLayout>
 
+</ScrollView>
