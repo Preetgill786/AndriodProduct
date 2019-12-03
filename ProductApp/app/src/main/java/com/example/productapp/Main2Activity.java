@@ -2,6 +2,7 @@ package com.example.productapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,7 +19,7 @@ public class Main2Activity extends AppCompatActivity implements  AdapterView.OnI
 ImageView iVimg;
 Spinner sp;
 EditText etPrice,etqty,etbill;
-Button btnorder;
+Button btnorder,btnlogOut;
 static  int i;
 double qnty;
     double[] price = {1665, 2705, 555, 600, 955, 1000};
@@ -33,6 +34,7 @@ double qnty;
         etqty=findViewById(R.id.qty);
         etbill=findViewById(R.id.bill);
         btnorder=findViewById(R.id.order);
+        btnlogOut=findViewById(R.id.logout);
 
 
         iVimg.setBackgroundResource(R.drawable.macair);
@@ -55,6 +57,7 @@ double qnty;
         sp.setOnItemSelectedListener(this);
 
 btnorder.setOnClickListener(this);
+btnlogOut.setOnClickListener(this);
     }
 
     @Override
@@ -74,9 +77,18 @@ btnorder.setOnClickListener(this);
 
     @Override
     public void onClick(View view) {
-        qnty= Double.parseDouble(etqty.getText().toString());
-        double total = (qnty * price[i])+(price[i]*13/100);
-        Double Total = new Double(total);
-        etbill.setText(Total.toString());
+        switch(view.getId()) {
+
+            case R.id.order:
+                qnty = Double.parseDouble(etqty.getText().toString());
+                double total = (qnty * price[i]) + (price[i] * 13 / 100);
+                Double Total = new Double(total);
+                etbill.setText(Total.toString());
+                break;
+            case R.id.logout:
+                Intent act1 = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(act1);
+                break;
+        }
     }
 }
